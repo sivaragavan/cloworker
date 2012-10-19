@@ -1,7 +1,11 @@
-
-
 exports.execute = function(command, inputs, callback) {
-	callback({
-		'result': true
+
+	executor = require("./packages/" + command);
+
+	executor.run(inputs, function(response) {
+		callback({
+			'response': response,
+			'result': true
+		});
 	});
 };
